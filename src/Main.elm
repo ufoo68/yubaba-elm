@@ -13,12 +13,12 @@ import Random
 
 
 type alias Model =
-    { luxuriousName : String, showNewName : Bool, index : Int }
+    { luxuriousName : String, hideNewName : Bool, positionOfName : Int }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( { luxuriousName = "", showNewName = True, index = 0 }, Cmd.none )
+    ( { luxuriousName = "", hideNewName = True, positionOfName = 0 }, Cmd.none )
 
 
 
@@ -38,10 +38,10 @@ update msg model =
             ( { model | luxuriousName = inputName }, Cmd.none )
 
         Send ->
-            ( { model | showNewName = False }, Random.generate YubabaSelect (Random.int 0 ((String.length model.luxuriousName) - 1)) )
+            ( { model | hideNewName = False }, Random.generate YubabaSelect (Random.int 0 (String.length model.luxuriousName - 1)) )
 
         YubabaSelect randomValue ->
-            ( { model | index = randomValue }, Cmd.none )
+            ( { model | positionOfName = randomValue }, Cmd.none )
 
 
 
@@ -58,8 +58,24 @@ view model =
                 , button [ onClick Send ] [ text "書いた" ]
                 ]
             ]
-        , div [ hidden model.showNewName ] [ text ("フン。" ++ model.luxuriousName ++ "というのかい。贅沢な名だねぇ。") ]
-        , div [ hidden model.showNewName ] [ text ("今からお前の名前は" ++ convertNewName model.index model.luxuriousName ++ "だ。いいかい、" ++ convertNewName model.index model.luxuriousName ++ "だよ。分かったら返事をするんだ、" ++ convertNewName model.index model.luxuriousName ++ "!!") ]
+        , div [ hidden model.hideNewName ]
+            [ text
+                ("フン。"
+                    ++ model.luxuriousName
+                    ++ "というのかい。贅沢な名だねぇ。"
+                )
+            ]
+        , div [ hidden model.hideNewName ]
+            [ text
+                ("今からお前の名前は"
+                    ++ convertNewName model.positionOfName model.luxuriousName
+                    ++ "だ。いいかい、"
+                    ++ convertNewName model.positionOfName model.luxuriousName
+                    ++ "だよ。分かったら返事をするんだ、"
+                    ++ convertNewName model.positionOfName model.luxuriousName
+                    ++ "!!"
+                )
+            ]
         ]
 
 
