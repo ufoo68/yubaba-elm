@@ -38,7 +38,7 @@ update msg model =
             ( { model | luxuriousName = inputName }, Cmd.none )
 
         Send ->
-            ( { model | showNewName = False }, Random.generate YubabaSelect (Random.int 1 (String.length model.luxuriousName)) )
+            ( { model | showNewName = False }, Random.generate YubabaSelect (Random.int 0 ((String.length model.luxuriousName) - 1)) )
 
         YubabaSelect randomValue ->
             ( { model | index = randomValue }, Cmd.none )
