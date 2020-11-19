@@ -1,0 +1,25 @@
+{
+  "name": "yubaba-elm",
+  "version": "1.0.0",
+  "description": "Try it [here]()!",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ufoo68/yubaba-elm.git"
+  },
+  "keywords": [
+    "elm"
+  ],
+  "author": "ufoo68",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ufoo68/yubaba-elm/issues"
+  },
+  "homepage": "https://github.com/ufoo68/yubaba-elm#readme"
+}
