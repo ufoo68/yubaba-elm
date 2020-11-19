@@ -78,20 +78,9 @@ view model =
             ]
         ]
 
-
-convertString : Maybe String -> String
-convertString maybeString =
-    case maybeString of
-        Nothing ->
-            ""
-
-        Just string ->
-            string
-
-
 convertNewName : Int -> String -> String
 convertNewName index oldName =
-    convertString (List.Extra.getAt index (String.split "" oldName))
+    Maybe.withDefault "" (List.Extra.getAt index (String.split "" oldName))
 
 
 
